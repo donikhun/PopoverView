@@ -95,11 +95,19 @@
     
     UIView *titleView;
     
+    UITableView *tableView;
+    
     UIActivityIndicatorView *activityIndicator;
+    
+    BOOL indentContent;
     
     //Instance variable that can change at runtime
     BOOL showDividerRects;
 }
+
+@property (nonatomic, assign) BOOL indentContent;
+
+@property (nonatomic, STRONG) UITableView *tableView;
 
 @property (nonatomic, STRONG) UIView *titleView;
 
@@ -130,6 +138,10 @@
 
 + (PopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withTitle:(NSString *)title withStringArray:(NSArray *)stringArray withImageArray:(NSArray *)imageArray delegate:(id<PopoverViewDelegate>)delegate;
 
++ (PopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withTitle:(NSString *)title withTableView:(UITableView *)tableView delegate:(id<PopoverViewDelegate>)delegate;
+
++ (PopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withTableView:(UITableView *)tableView delegate:(id<PopoverViewDelegate>)delegate;
+
 + (PopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withTitle:(NSString *)title withContentView:(UIView *)cView delegate:(id<PopoverViewDelegate>)delegate;
 
 + (PopoverView *)showPopoverAtPoint:(CGPoint)point inView:(UIView *)view withContentView:(UIView *)cView delegate:(id<PopoverViewDelegate>)delegate;
@@ -141,6 +153,12 @@
 //a clear color backgroundColor, or perhaps a rounded corner bg rect (radius 4.f if you're going to
 //round).
 - (void)showAtPoint:(CGPoint)point inView:(UIView *)view withContentView:(UIView *)contentView;
+
+//Adds UITableView to the popover, removing padding and with a title
+- (void)showAtPoint:(CGPoint)point inView:(UIView *)view withTitle:(NSString *)title withTableView:(UITableView *)tableView;
+
+//Adds UITableView to the popover, removing padding and with a title
+- (void)showAtPoint:(CGPoint)point inView:(UIView *)view withTableView:(UITableView *)tableView;
 
 //Calls above method with a UILabel containing the text you deliver to this method.
 - (void)showAtPoint:(CGPoint)point inView:(UIView *)view withText:(NSString *)text;
