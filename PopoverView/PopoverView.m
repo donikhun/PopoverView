@@ -91,7 +91,6 @@
     PopoverView *popoverView = [[PopoverView alloc] initWithFrame:CGRectZero];
     [popoverView showAtPoint:point inView:view withTitle:title withTableView:tableView];
     popoverView.delegate = delegate;
-    [popoverView release];
     return popoverView;
 }
 
